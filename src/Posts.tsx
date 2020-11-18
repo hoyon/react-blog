@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import PostSummary from './PostSummary';
-import { Post, getPrismicData } from './post_data';
+import { Post, getPosts } from './post_data';
 
 interface PostsProps {}
 
 function Posts({}: PostsProps) {
-  const [posts, setPosts] = useState(null);
+  const [posts, setPosts] = useState<Post[] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const posts = await getPrismicData();
+      const posts = await getPosts();
       if (posts) {
         setPosts(posts);
       }
@@ -21,7 +21,7 @@ function Posts({}: PostsProps) {
     return (
       <div className='container mx-auto'>
         {posts.map(post =>
-          <PostSummary {...post} key={post.id} />
+          <PostSummary {...post} key={post.uid} />
         )}
       </div>
     );

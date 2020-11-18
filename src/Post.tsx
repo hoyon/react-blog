@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { RichText } from 'prismic-reactjs';
-import { getPost, getPrismicData } from './post_data';
+import { RichText, RichTextBlock } from 'prismic-reactjs';
+import { Post, getPost, getPosts } from './post_data';
 
 interface PostProps {}
 
@@ -12,23 +12,25 @@ interface PostParams {
 function Post({}: PostProps) {
   let { postId } = useParams<PostParams>();
 
-  const [doc, setDocData] = useState(null);
+  const [post, setPostData] = useState<Post | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const post = await getPost(postId);
       if (post) {
-        setDocData(post);
+        setPostData(post);
       }
     }
     fetchData();
   }, [])
 
-  if (doc) {
+  if (post) {
     return(
       <div className='container mx-auto'>
-        <h1 className='text-2xl font-bold mb-2'>{RichText.asText(doc.title)}</h1>
-        {renderItems(doc.body)}
+        <h1 className='text-2xl font-bold mb-2'>
+          {RichText.asText(post.title as RichTextBlock[])}
+        </h1>
+        <Items body={post.body} />
       </div>
     );
   } else {
@@ -38,13 +40,21 @@ function Post({}: PostProps) {
   }
 }
 
-function renderItems(body) {
-  return body.map((item, idx) => {
-    return renderItem(item)
+interface ItemsProps {
+  body: any
+}
+
+const Items: React.FC<ItemsProps> = ({body}) => {
+  return body.map((item: any, idx: number) => {
+    return <Item item={item} key={idx} />
   });
 }
 
-function renderItem(item) {
+interface ItemProps {
+  item: any
+}
+
+const Item: React.FC<ItemProps> = ({item}) => {
   switch (item.slice_type) {
     case 'text':
       return (
@@ -53,12 +63,14 @@ function renderItem(item) {
           {renderTextItems(item.items)}
         </>
       );
+    default:
+      return <div>Unsupported item type</div>
   }
 }
 
-function renderTextItems(items) {
-  return items.map((i) => {
-    return <img src={i.image.url} alt={i.image.alt} />
+function renderTextItems(items: any): JSX.Element[] {
+  return items.map((i: any, idx: number) => {
+    return <img src={i.image.url} alt={i.image.alt} key={idx} />
   });
 }
 

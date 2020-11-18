@@ -1,18 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { RichText } from 'prismic-reactjs';
+import { RichText, RichTextBlock } from 'prismic-reactjs';
+import type { Post } from './post_data';
 
-interface PostSummaryProps {
-  uid: string,
-  title: string,
-  contents: string
-}
-
-function PostSummary(props: PostSummaryProps) {
+function PostSummary(props: Post) {
   return (
     <div className='mb-4'>
       <Link to={`/posts/${props.uid}`}>
-        <h2 className='text-xl mb-1 font-bold hover:text-blue-700'>{RichText.asText(props.title)}</h2>
+        <h2 className='text-xl mb-1 font-bold hover:text-blue-700'>
+          {RichText.asText(props.title as RichTextBlock[])}
+        </h2>
       </Link>
     </div>
   );
