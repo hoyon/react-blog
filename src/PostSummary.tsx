@@ -9,9 +9,9 @@ interface PostSummaryProps {
 
 function PostSummary(props: PostSummaryProps) {
   return (
-    <div>
+    <div className='mb-4'>
       <Link to={`/posts/${props.id}`}>
-        <h2>{props.title}</h2>
+        <h2 className='text-xl mb-1 font-bold hover:text-blue-700'>{props.title}</h2>
       </Link>
       <p>{props.contents}</p>
     </div>

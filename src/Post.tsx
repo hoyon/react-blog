@@ -14,8 +14,8 @@ function Post({}: PostProps) {
 
   if (post) {
     return(
-      <div>
-        <h1>{post.title}</h1>
+      <div className='container mx-auto'>
+        <h1 className='text-2xl font-bold mb-2'>{post.title}</h1>
         <p>{post.contents}</p>
       </div>
     );

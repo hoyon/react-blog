@@ -8,12 +8,11 @@ function Posts({}: PostsProps) {
   const posts: Post[] = getPosts();
 
   return (
-    <>
-      <h1>My blog</h1>
+    <div className='container mx-auto'>
       {posts.map(post =>
         <PostSummary {...post} key={post.id} />
       )}
-    </>
+    </div>
   );
 }
 
