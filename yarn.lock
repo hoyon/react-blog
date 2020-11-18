@@ -1049,6 +1049,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cross-fetch@npm:^3.0.5":
+  version: 3.0.6
+  resolution: "cross-fetch@npm:3.0.6"
+  dependencies:
+    node-fetch: 2.6.1
+  checksum: a491ad1b89988a351f8b8b252b68a5e653636d911042648c43a806cf7575ff043379a80d6269102ca60ec633af0b49ca4c83536007793bb0e65e491769f70d9d
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:^7.0.0":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
@@ -2257,6 +2266,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"node-fetch@npm:2.6.1":
+  version: 2.6.1
+  resolution: "node-fetch@npm:2.6.1"
+  checksum: cbb171635e538162b977eac5dfe7a1e07a9a02e991924377a6435502291e2f823d306b95aabc455caebf4a118ccf836868462bc70ccc3095af02bb9da61fda37
+  languageName: node
+  linkType: hard
+
 "node-gyp@npm:latest":
   version: 7.1.2
   resolution: "node-gyp@npm:7.1.2"
@@ -2714,6 +2730,45 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"prismic-helpers@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "prismic-helpers@npm:1.0.3"
+  checksum: f0216d76778c4aa163042aad84972096512eab668021a6822356e76b18fe4d548a535243e968ee7432832f018f1bd956bafc2c0190518dbb43345bb9dd5f5442
+  languageName: node
+  linkType: hard
+
+"prismic-javascript@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "prismic-javascript@npm:3.0.2"
+  dependencies:
+    cross-fetch: ^3.0.5
+  checksum: 006f4b2260688202b6d079160adb4f162a0580f4413bb337c78217a6db311a2374a1ff189198026ab0ae07db742c9f618856cabdb743b4c2cda03f2af3b94766
+  languageName: node
+  linkType: hard
+
+"prismic-reactjs@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "prismic-reactjs@npm:1.3.3"
+  dependencies:
+    prismic-helpers: ^1.0.3
+    prismic-richtext: ^1.0.3
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: ">=16.0.0"
+  checksum: a531edfcdb09b5541df683656df9f6932ee1bb54519b9a639598b20c81283564bf2585f9170e2a68d4c1d109c0e125d6fc927c082dc79a1d1e929ef35f5f2241
+  languageName: node
+  linkType: hard
+
+"prismic-richtext@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "prismic-richtext@npm:1.0.3"
+  dependencies:
+    ramda: ^0.26.1
+    uuid: ^3.3.2
+  checksum: 555aa61f979dfbca4341ce961ca69a5f78ebbb2b9932af527a9baf515d592642654aa854ff8d213d7cc18eb37eb345a20788825884a11c88f05686810f75eb6e
+  languageName: node
+  linkType: hard
+
 "process-nextick-args@npm:~2.0.0":
   version: 2.0.1
   resolution: "process-nextick-args@npm:2.0.1"
@@ -2728,7 +2783,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.2":
+"prop-types@npm:^15.6.2, prop-types@npm:^15.7.2":
   version: 15.7.2
   resolution: "prop-types@npm:15.7.2"
   dependencies:
@@ -2784,6 +2839,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"ramda@npm:^0.26.1":
+  version: 0.26.1
+  resolution: "ramda@npm:0.26.1"
+  checksum: 22e3fbfabdf45d7f7e8e0ff198be6c1f94d1cc16dd68f4c1786436b4583f8f1ef610a3bf0e8e8984c11346791da6ebadbe5b63dd29f2939bdfed7362d277c07b
+  languageName: node
+  linkType: hard
+
 "react-blog@workspace:.":
   version: 0.0.0-use.local
   resolution: "react-blog@workspace:."
@@ -2795,6 +2857,8 @@ fsevents@~2.1.2:
     "@types/react-dom": ^16.9.9
     "@types/react-router-dom": ^5.1.6
     "@types/snowpack-env": ^2.3.2
+    prismic-javascript: ^3.0.2
+    prismic-reactjs: ^1.3.3
     react: ^17.0.1
     react-dom: ^17.0.1
     react-router-dom: ^5.2.0

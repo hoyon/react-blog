@@ -8,5 +8,8 @@ module.exports = {
     '@snowpack/plugin-react-refresh',
     '@snowpack/plugin-dotenv',
     '@snowpack/plugin-typescript'
-  ]
+  ],
+  installOptions: {
+    namedExports: ['prismic-reactjs']
+  }
 }

@@ -1,17 +1,33 @@
+import Prismic from 'prismic-javascript';
+
+const apiEndpoint ='https://hoyon-blog-test.cdn.prismic.io/api/v2';
+const accessToken = import.meta.env.SNOWPACK_PUBLIC_PRISMIC_API_TOKEN;
+
+const Client = Prismic.client(apiEndpoint, { accessToken });
+
 export interface Post {
-  id: string,
+  uid: string,
   title: string,
-  contents: string,
+  body: any
 }
 
-export function getPosts(): Post[] {
-  return [
-    {id: '1', title: 'First post', contents: 'great post'},
-    {id: '2', title: 'Second post', contents: 'superb story'}
-  ];
+export async function getPost(uid: string): Post | undefined {
+  const response = await Client.getByUID('blog_post', uid);
+  return {
+    uid: response.uid,
+    title: response.data.title,
+    body: response.data.body
+  }
 }
 
-export function getPost(id: string): Post | undefined {
-  const posts = getPosts();
-  return posts.find(p => p.id === id);
+export async function getPrismicData(): Post[] {
+  const response = await Client.query(
+    Prismic.Predicates.at('document.type', 'blog_post')
+  );
+
+  return response.results.map((r) => ({
+    uid: r.uid,
+    title: r.data.title,
+    body: r.data.body
+  }));
 }
