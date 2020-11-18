@@ -8,7 +8,7 @@ function PostSummary(props: Post) {
     <div className='mb-4'>
       <Link to={`/posts/${props.uid}`}>
         <h2 className='text-xl mb-1 font-bold hover:text-blue-700'>
-          {RichText.asText(props.title as RichTextBlock[])}
+          {RichText.asText(props.title)}
         </h2>
       </Link>
     </div>
