@@ -1,6 +1,6 @@
 import React from 'react';
 import PostSummary from './PostSummary';
-import { getPosts } from './post_data';
+import { getPosts, Post } from './post_data';
 
 interface PostsProps {}
 

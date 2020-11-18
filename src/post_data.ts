@@ -1,4 +1,4 @@
-type Post = {
+export interface Post {
   id: string,
   title: string,
   contents: string,
@@ -11,7 +11,7 @@ export function getPosts(): Post[] {
   ];
 }
 
-export function getPost(id: string): Post {
+export function getPost(id: string): Post | undefined {
   const posts = getPosts();
   return posts.find(p => p.id === id);
 }
