@@ -1,12 +1,10 @@
 import React from 'react';
 import Posts from './Posts';
 import Post from './Post';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './app.css';
 
-interface AppProps {}
-
-function App({}: AppProps) {
+const App: React.FC<{}> = ({ }) => {
   return (
     <Router>
       <div className='container mx-auto m-4'>
