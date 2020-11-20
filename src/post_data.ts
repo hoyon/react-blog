@@ -32,3 +32,18 @@ export async function getPosts(): Promise<Post[]> {
     body: r.data.body
   }));
 }
+
+export interface FaqItem {
+  question: RichTextBlock[],
+  answer: RichTextBlock[]
+}
+
+export async function getFaqItems(): Promise<FaqItem[]> {
+  const response = await Client.getSingle('faq', {});
+  return response.data.body.map((body: any) => ( 
+    {
+      question: body.primary.question,
+      answer: body.primary.answer
+    }
+  ));
+}
